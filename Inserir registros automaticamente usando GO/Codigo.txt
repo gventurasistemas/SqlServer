@@ -1,0 +1,26 @@
+USE banco_teste
+Drop table if exists tCADRevista
+Create Table tCADRevista (Id int, Nome varchar(50))
+go
+
+insert into tCADRevista (Id, Nome) values (rand()*10000,newid() )
+go 200000
+
+select * from tCADRevista
+
+/////////////////////////////////////////////////////////////////
+
+USE Abc
+Drop table if exists tbl_Usuario
+Create Table tbl_Usuario (Id int, Nome varchar(50))
+go
+
+DECLARE @Id int
+
+insert into tbl_Usuario (Id, Nome) values (rand()*100000, newid() )
+
+go 1000
+
+select * from tbl_Usuario Order By Id Desc
+go
+

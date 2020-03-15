@@ -1,0 +1,83 @@
+////////////////////////////////////////////////////////////////SQL SERVER///////////////////////////////////////////////////////////////////////////////////
+
+Site
+https://docs.microsoft.com/pt-br/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-2017
+
+Instalar o SQL Server
+Para configurar o SQL Server no Ubuntu(e derivados como o MINT), execute os seguintes comandos em um terminal para instalar o pacote mssql-server.
+Importe as chaves GPG do repositório público:
+
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+
+Registre o repositório do Ubuntu do Microsoft SQL Server:
+
+sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)"
+ 
+Execute os comandos a seguir para instalar o SQL Server:
+
+sudo apt-get update
+sudo apt-get install -y mssql-server
+
+
+Após a conclusão da instalação do pacote, execute a instalação de mssql-conf e siga os prompts para definir a senha SA e escolher sua edição.
+
+sudo /opt/mssql/bin/mssql-conf setup
+ Dica
+
+As seguintes edições do SQL Server 2017 são licenciadas gratuitamente: Evaluation, Developer e Express.
+ Observação
+
+Especifique uma senha forte para a conta SA (comprimento mínimo de 8 caracteres, incluindo letras maiúsculas e minúsculas, 10 dígitos básicos e/ou símbolos não alfanuméricos).
+Após concluir a configuração, verifique se o serviço está em execução:
+bash
+
+Copiar
+systemctl status mssql-server --no-pager
+Se planeja se conectar remotamente, talvez seja preciso abrir a porta TCP do SQL Server (padrão 1433) em seu firewall.
+
+
+
+////////////////////////////////////////////////////////////////Azure Data Studio///////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+Site
+https://docs.microsoft.com/pt-br/sql/azure-data-studio/download?view=sql-server-2017
+
+Baixe o Azure Data Studio para Linux usando um dos instaladores ou os arquivos tar.gz:
+Dica: Para linux Mint, baixe o .deb
+
+.deb
+.rpm
+.tar.gz
+
+Para extrair o arquivo e iniciar o Azure Data Studio, abra uma nova janela do terminal e digite os seguintes comandos:
+Instalação do Debian:
+
+sudo dpkg -i ./Downloads/azuredatastudio-linux-<version string>.deb
+
+ Observação
+
+No Debian, Redhat e Ubuntu, você pode ter dependências ausentes. Use os seguintes comandos para instalar estas dependências, de acordo com sua versão do Linux:
+Debian:
+bash
+
+Copiar
+sudo apt-get install libunwind8
+Red Hat:
+bash
+
+Copiar
+yum install libXScrnSaver
+Ubuntu:
+bash
+
+Copiar
+sudo apt-get install libxss1
+
+sudo apt-get install libgconf-2-4
+

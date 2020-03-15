@@ -1,0 +1,15 @@
+/////////////////////////////////SELECT as ////////////////////////////////////////////
+
+USE Abc --Usar o banco de dados Abc
+GO 
+SET NOCOUNT ON --Reduz o tempo de processamento das instruções
+
+DECLARE @Teste varchar(100) = 'TesteSelect as'
+DECLARE @Idade INT = 34
+
+Select @Teste as Nome , 
+       @Idade as Idade 
+
+--Resultado
+--  Nome			Idade
+--TesteSelect as		  34

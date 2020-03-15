@@ -1,0 +1,7 @@
+ALTER TABLE nome-da-tabela ADD CONSTRAINT nome-da-constraint 
+FOREIGN KEY(nome-da-coluna-local) REFERENCES nome-da-tabela-da-fk(coluna-fk)
+
+
+
+ALTER TABLE entradaitem ADD CONSTRAINT idclientepj_int_fk
+FOREIGN KEY(idclientepj_int) REFERENCES clientepj (idclientepj_int);

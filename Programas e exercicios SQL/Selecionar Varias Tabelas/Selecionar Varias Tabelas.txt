@@ -1,0 +1,7 @@
+
+Select banco.tabela1.campo1, banco.tabela1.campo2, banco.tabela1.campo3, banco.tabela2.campo1, banco.tabela2.campo2, banco.tabela3.campo3 from banco.tabela1, banco.tabela2
+where (condição que voce quer)
+
+Exemplo:
+SELECT bancogois.entradaitem.codigoitem_str, bancogois.clientepj.idclientepj_int from bancogois.entradaitem, bancogois.clientepj
+WHERE bancogois.clientepj.idclientepj_int = 2;

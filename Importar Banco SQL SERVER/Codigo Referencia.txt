@@ -1,0 +1,11 @@
+CREATE DATABASE AdventureWorks2012_Data
+ON (FILENAME = N'C:\Users\USER\AppData\Local\Microsoft\Microsoft SQL Server Local DB\Instances\MSSQLLocalDB\AdventureWorks2012_Data.mdf')
+FOR ATTACH_REBUILD_LOG 
+Go
+
+
+
+
+
+
+C:\Users\USER\AppData\Local\Microsoft\Microsoft SQL Server Local DB\Instances\MSSQLLocalDB\AdventureWorks2012_Data.mdf

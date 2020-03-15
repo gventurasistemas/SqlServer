@@ -1,0 +1,121 @@
+1)
+///////////////////////////////////Forma correta/////////////////////////////////////
+
+USE Abc --Usar o banco de dados Abc
+GO 
+SET NOCOUNT ON --Reduz o tempo de processamento das instruções
+
+DECLARE @Resultado INT = 20
+SET @Resultado += 300
+PRINT @RESULTADO
+GO
+
+//////////////////////////////////Formas Erradas ////////////////////////////////////////////
+
+USE Abc --Usar o banco de dados Abc
+GO 
+SET NOCOUNT ON --Reduz o tempo de processamento das instruções
+
+DECLARE @Resultado INT 
+SET @Resultado += 300
+PRINT @RESULTADO
+GO
+--Não apresenta erro, porém não retorna nada. Não foi atribuido valor para variavel @Resultado, logo o SQL entende como NULL
+
+
+USE Abc --Usar o banco de dados Abc
+GO 
+SET NOCOUNT ON --Reduz o tempo de processamento das instruções
+
+DECLARE @Resultado SMALLINT = NULL
+SET @Resultado += 300
+PRINT @RESULTADO
+GO
+
+--Msg 220, Level 16, State 2, Line 6
+--Erro de estouro de capacidade aritmética para o tipo de dados tinyint, valor = 320.
+--20
+
+
+2)
+
+///////////////////////////////////Forma correta/////////////////////////////////////
+
+/******Tabela tRELEstoque
+iIDEstoque	iIDLivro	iIDLoja	nQuantidade	mValor	dAlteracao	dUltimoConsumo	nQuantidadeMinima
+2640	106	20	2414	15,312	2018-04-11 04:20:40.000	NULL	0
+******/
+
+
+USE eBook2 --Usar o banco de dados eBook2
+GO 
+SET NOCOUNT ON --Reduz o tempo de processamento das instruções
+
+Declare @nQuantidade int = 100 --Declara variavel com valor 100
+Declare @mValor smallmoney -- Declara variavel, assumi valor = null
+Declare @mValorEstoque smallmoney = null --Declara variavel nula
+
+ --Na tabela tRELEstoque
+ -- nQuantidade = 2414
+ -- mValor = 15,312
+
+Select @mValorEstoque = ( @nQuantidade * @mValor), -- @mValorEstoque = 100 * null. @mValorEstoque = null
+       @nQuantidade = nQuantidade , --2414
+       @mValor = mValor  --15,312
+  From tRELEstoque
+ Where iIDEstoque = 2640 
+ 
+Select @nQuantidade as Quantidade , --2414
+       @mValor as Valor  , --15,312
+       @mValorEstoque as ValorEstoque --Null
+
+
+
+///////////////////////////////////Forma correta/////////////////////////////////////
+/*
+iIDEstoque	iIDLivro	iIDLoja	  nQuantidade	mValor		dAlteracao		dUltimoConsumo		nQuantidadeMinima
+68392		107				34			35		81,1161			NULL			NULL				0
+9955		107				63			80		81,1161			NULL			NULL				0
+36868		107				84			9		81,1161			NULL			NULL				0
+69710		107				90			6		81,1161	2018-06-0314:45:16.000	NULL				0
+*/
+
+USE eBook2 --Usar o banco de dados eBook2
+GO 
+SET NOCOUNT ON --Reduz o tempo de processamento das instruções
+
+Declare @nQuantidade int = 100 
+ 
+Select @nQuantidade = nQuantidade --@nQuantidade = 6, 35, 9, 80
+  From tRELEstoque
+ Where iidlivro = 107
+ Order by iIDEstoque Desc --último que sera processado iIDEstoque = 9955 ou seja nQuantidade = 80
+ 
+Select @nQuantidade as Quantidade  --80
+
+/*Resultado
+Quantidade
+80
+*/
+
+
+
+
+/////////////////////////////////SELECT as ////////////////////////////////////////////
+
+USE Abc --Usar o banco de dados Abc
+GO 
+SET NOCOUNT ON --Reduz o tempo de processamento das instruções
+
+DECLARE @Teste varchar(100) = 'TesteSelect as'
+DECLARE @Idade INT = 34
+
+Select @Teste as Nome , 
+       @Idade as Idade 
+
+--Resultado
+--  Nome			Idade
+--TesteSelect as		  34
+
+
+

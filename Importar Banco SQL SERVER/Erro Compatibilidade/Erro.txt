@@ -1,0 +1,13 @@
+To upgrade a database file
+In Server Explorer, choose the Connect to Database button.
+In the Add Connection dialog box, specify the following information:
+Data Source: Microsoft SQL Server (SqlClient)
+Server Name: 
+To use the default version: (localdb)\MSSQLLocalDB: This will specify either ProjectV12 or ProjectV13 depending on which version of Visual Studio is installed and when the first LocalDB was created. The MSSQLLocalDB node in SQL Server Object Explorer shows which version it is pointing to.
+To use a specific version: (localdb)\ProjectsV12 or (localdb)\ProjectsV13, where V12 is LocalDB 2014 and V13 is LocalDB 2016.
+Attach a database file: Path, where Path is the physical path of the primary .mdf file.
+Logical Name: Name, where Name is the name that you want to use with the file.
+Choose the OK button.
+When prompted, choose the Yes button to upgrade the file.
+The database is upgraded, attached to the LocalDB database engine, and no longer compatible with the older version of LocalDB.
+You can also modify a SQLExpress connection to use LocalDB by opening the shortcut menu for the connection and then choosing Modify Connection. In the Modify Connection dialog box, change the server name to (LocalDB)\MSSQLLocalDB. In the Advanced Properties dialog box, make sure that User Instance is set to False.

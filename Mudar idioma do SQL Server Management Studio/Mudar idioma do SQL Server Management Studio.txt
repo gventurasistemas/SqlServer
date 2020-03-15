@@ -1,0 +1,3 @@
+Na barra superior clique em “Ferramentas” -> Opções
+Na guia lateral clique em “Configurações internacionais” em seguinda irá aparecer os idiomas, escolha o idioma Inglês e clique em ok.
+Agora é só fechar e executar novamente

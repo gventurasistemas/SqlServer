@@ -1,0 +1,66 @@
+///////////////////////PROCEDURE [stp_SimplesSelecionarTodos]///////////////////////////
+
+USE [Abc]
+GO
+/****** Object:  StoredProcedure [dbo].[stp_SimplesSelecionarTodos]    Script Date: 23/12/2019 00:08:23 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[stp_SimplesSelecionarTodos]
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statement.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT * FROM dbo.TabelaTeste 
+END
+
+
+///////////////////////PROCEDURE [stp_SelecionarTodos]///////////////////////////
+
+
+USE [Abc]
+GO
+/****** Object:  StoredProcedure [dbo].[stp_SelecionarTodos]    Script Date: 23/12/2019 00:06:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[stp_SelecionarTodos]
+	-- Add the parameters for the stored procedure here
+	@Id int, @Teste nchar(10)	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statement.
+	SET NOCOUNT ON;
+
+    	-- statements for procedure here
+	SELECT * FROM dbo.TabelaTeste WHERE id = @Id AND teste = @Teste
+END
+
+/////////////////////////EXECUTAR AS PROCEDURES///////////////////////
+
+
+USE Abc
+GO
+
+EXECUTE stp_SimplesSelecionarTodos;
+GO
+
+EXEC stp_SelecionarTodos @Id = 2, @Teste = "PAULO";
+GO
